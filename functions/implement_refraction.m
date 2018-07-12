@@ -19,4 +19,4 @@ end
 
 %remove any events with the timestamp equal to 0
 invalid_indices = (events.ts == 0);
-events = RemoveNulls(events, invalid_indices); 
+events = remove_nulls(events, invalid_indices); 

@@ -20,7 +20,7 @@ num_spikes = zeros(1, num_speeds); %find the number of output events for each sp
 output_events = cell(1,num_speeds); %create a cell to hold output events for each speed
 for speed_index = 1:num_speeds
     %implement a refraction period equal to the longest filter delay for each speed
-    output_events{speed_index} = ImplementRefraction(input_events, max_delay(speed_index)); 
+    output_events{speed_index} = implement_refraction(input_events, max_delay(speed_index)); 
     
     %find the number of spikes in the refracted spike stream
     num_spikes(speed_index) = length(output_events{speed_index}.ts);
