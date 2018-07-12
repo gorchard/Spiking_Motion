@@ -88,5 +88,5 @@ if ~isempty(Stream2)
 end
 
 if isfield(Stream1, 'TimeStamp') || isfield(Stream1, 'ts')
-    Stream1 = SortOrder(Stream1);
+    Stream1 = sort_order(Stream1);
 end

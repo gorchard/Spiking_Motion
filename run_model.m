@@ -44,6 +44,10 @@ TDneg.ts    = TD.ts(neg_indices);
 tic
 layer1_output = run_layer_1(TDneg, TDpos, filter_speeds, filter_directions, filter_size, spike_threshold, decay_rate, reset_potential, filename);
 
+if ~exist('Results', 'dir')
+    mkdir('Results')
+end
+
 save(['Results', filesep, filename, '_layer1'], 'layer1_output')
 
 %optionally display the result
@@ -71,7 +75,7 @@ spike_threshold      = 60;
 decay_rate           = ((filter_speeds*spike_threshold*1e-3)/100); %use a much slower decay in layer 2. pretty much zero
 reset_potential      = -50;
 
-fprintf('Simulating Layer 2: Processing merged stream of %i events\n', length(output_spikes_layer1.ts));
+fprintf('Simulating Layer 2: Processing merged stream of %i events\n', length(layer1_output.ts));
 layer2_output = spike_layer_2(layer1_output, filters, spike_threshold, decay_rate, reset_potential);
 
 save(['Results', filesep, filename, '_layer2'], 'layer2_output');
